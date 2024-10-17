@@ -7,6 +7,7 @@ from pyparsing import withClass
 
 from librairy.travailJSON import *
 from librairy.dectectionOS import *
+import webbrowser as wb
 
 class CArreraReturnToolKit :
     def __init__(self,debugConf:str):
@@ -18,6 +19,8 @@ class CArreraReturnToolKit :
         self.__styleText = ("Arial", 15)
         self.__txtBTN = [configFile.lectureJSON("btn1Text"),configFile.lectureJSON("btn3Text"),
                          configFile.lectureJSON("btn2Text"),configFile.lectureJSON("btn4Text")]
+        self.__linkBTN = [configFile.lectureJSON("btn1Link"),configFile.lectureJSON("btn3Link"),
+                         configFile.lectureJSON("btn2Link"),configFile.lectureJSON("btn4Link")]
 
     def active(self):
         # Creation de la fenetre
@@ -38,16 +41,21 @@ class CArreraReturnToolKit :
                            bg=self.__color,
                            font=self.__styleTextTitle,fg=self.__textcolor)
         btnQuit = Button(win,text="Quitter",bg=self.__color,
-                         fg=self.__textcolor,font=self.__styleText)
+                         fg=self.__textcolor,font=self.__styleText,
+                         command=lambda : win.quit())
         #BTN
         btn1 = Button(frameBTN,text=self.__txtBTN[0],font=self.__styleText,
-                      bg=self.__color,fg=self.__textcolor,wraplength=100)
+                      bg=self.__color,fg=self.__textcolor,wraplength=100,
+                      command= lambda : wb.open(self.__linkBTN[0]))
         btn2 = Button(frameBTN, text=self.__txtBTN[1], font=self.__styleText,
-                      bg=self.__color, fg=self.__textcolor,wraplength=100)
+                      bg=self.__color, fg=self.__textcolor,wraplength=100,
+                      command= lambda : wb.open(self.__linkBTN[1]))
         btn3 = Button(frameBTN, text=self.__txtBTN[2], font=self.__styleText,
-                      bg=self.__color, fg=self.__textcolor,wraplength=100)
+                      bg=self.__color, fg=self.__textcolor,wraplength=100,
+                      command= lambda : wb.open(self.__linkBTN[2]))
         btn4 = Button(frameBTN, text=self.__txtBTN[3], font=self.__styleText,
-                      bg=self.__color, fg=self.__textcolor,wraplength=100)
+                      bg=self.__color, fg=self.__textcolor,wraplength=100,
+                      command= lambda : wb.open(self.__linkBTN[3]))
         # Affichage
         frameBTN.place(relx=0.5, rely=0.5, anchor="center")
 
