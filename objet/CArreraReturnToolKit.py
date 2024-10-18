@@ -2,6 +2,7 @@ from multiprocessing.context import BufferTooShort
 from platform import win32_ver
 from tkinter import*
 
+from lvmdbusd.utils import color
 from lxml.html.builder import FRAME
 from pyparsing import withClass
 
@@ -34,7 +35,7 @@ class CArreraReturnToolKit :
             win.minsize(500, 610)
         win.configure(bg=self.__color)
         # Frame
-        frameBTN = Frame(win,width=400,height=400,bg="red")
+        frameBTN = Frame(win,width=400,height=400,bg=self.__color)
         # Widget
         # Win
         labelTitle = Label(win,text=self.__name,
@@ -59,10 +60,14 @@ class CArreraReturnToolKit :
         # Affichage
         frameBTN.place(relx=0.5, rely=0.5, anchor="center")
 
-        btn1.place(relx=0.0, rely=0.0, anchor='nw')
-        btn2.place(relx=1.0, rely=0.0, anchor='ne')
-        btn3.place(relx=0, rely=1, anchor='sw')
-        btn4.place(relx=1, rely=1, anchor='se')
+        if self.__txtBTN[0] and self.__linkBTN[0] :
+            btn1.place(relx=0.0, rely=0.0, anchor='nw')
+        if self.__txtBTN[1] and self.__linkBTN[1]:
+            btn2.place(relx=1.0, rely=0.0, anchor='ne')
+        if self.__txtBTN[2] and self.__linkBTN[2]:
+            btn3.place(relx=0, rely=1, anchor='sw')
+        if self.__txtBTN[3] and self.__linkBTN[3]:
+            btn4.place(relx=1, rely=1, anchor='se')
 
         labelTitle.pack()
         btnQuit.pack(side="bottom")
