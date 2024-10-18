@@ -1,11 +1,4 @@
-from multiprocessing.context import BufferTooShort
-from platform import win32_ver
 from tkinter import*
-
-from lvmdbusd.utils import color
-from lxml.html.builder import FRAME
-from pyparsing import withClass
-
 from librairy.travailJSON import *
 from librairy.dectectionOS import *
 import webbrowser as wb
